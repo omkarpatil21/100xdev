@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+</head>
+<script>
+    function calculateSum()
+    {
+        const a=document.getElementById("value1").value;
+        const b=document.getElementById("value2").value;
+        const sum=parseInt(a)+parseInt(b);
+        alert("sum of two nos is "+sum);
+        document.getElementById("sum").innerHTML="the sum of two nos is"+sum;
+    }
+</script>
+<body>
+    <div><input id="value1" type="text" placeholder="first number"></div>
+    <br>
+    <br>
+    <div><input id="value2"type="text" placeholder="second number"></div>
+    <br>
+    <br>
+    <button onclick="calculateSum()">add</button>
+    <br>
+    <div id="sum"></div>
+</body>
+</html>
