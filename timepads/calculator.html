@@ -6,15 +6,21 @@
     <title>calculator</title>
 </head>
 <script>
-    async function calculateSum()
+    let timeout;
+    function dethrottle()
+    {
+        clearTimeout(timeout);
+        timeout=setTimeout(execute,5000);
+    }
+    const execute=async function calculateSum()
     {
         const a=document.getElementById("value1").value;
         const b=document.getElementById("value2").value;
         const sum=parseInt(a)+parseInt(b);
         const response=await fetch("https://sum-server.100xdevs.com/sum?a="+a+"&b="+b);
         const ans=await response.text();
-        console.log(response    );
-        alert("sum of two nos is "+ans);
+        console.log(response);
+      //  alert("sum of two nos is "+ans);
         document.getElementById("sum").innerHTML="the sum of two nos is"+sum;
     }
     async function calculateInterest()
@@ -39,10 +45,10 @@
     <div><input id="value1" type="text" placeholder="first number"></div>
     <br>
     <br>
-    <div><input id="value2"type="text" placeholder="second number"></div>
+    <div><input oninput="dethrottle()" id="value2"type="text" placeholder="second number"></div>
     <br>
     <br>
-    <button onclick="calculateSum()">add</button>
+    <!-- <button onclick="calculateSum()">add</button> -->
     <br>
     <div id="sum"></div>
     <br>
