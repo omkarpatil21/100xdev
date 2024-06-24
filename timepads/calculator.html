@@ -6,13 +6,28 @@
     <title>calculator</title>
 </head>
 <script>
-    function calculateSum()
+    async function calculateSum()
     {
         const a=document.getElementById("value1").value;
         const b=document.getElementById("value2").value;
         const sum=parseInt(a)+parseInt(b);
-        alert("sum of two nos is "+sum);
+        const response=await fetch("https://sum-server.100xdevs.com/sum?a="+a+"&b="+b);
+        const ans=await response.text();
+        console.log(response    );
+        alert("sum of two nos is "+ans);
         document.getElementById("sum").innerHTML="the sum of two nos is"+sum;
+    }
+    async function calculateInterest()
+    {
+        const a=document.getElementById("value3").value;
+        const b=document.getElementById("value4").value;
+        const c=document.getElementById("value5").value;
+        const url="https://sum-server.100xdevs.com/interest?principal="+a+"&rate="+b+"&time="+c;
+        console.log(url);
+        const response=await fetch(url);
+        const ans=await response.json();
+        console.log(ans);
+        document.getElementById("interest").innerHTML="The interest is"+ans.interest+" and total is "+ans.total;
     }
 </script>
 <body>
@@ -25,5 +40,18 @@
     <button onclick="calculateSum()">add</button>
     <br>
     <div id="sum"></div>
+    <br>
+    <div><input id="value3" type="text" placeholder="principal"></div>
+    <br>
+    <br>
+    <div><input id="value4"type="text" placeholder="rate"></div>
+    <br>
+    <br>
+    <div><input id="value5"type="text" placeholder="time"></div>
+    <br>
+    <br>
+    <button onclick="calculateInterest()">calculate</button>
+    <br>
+    <div id="interest"></div>
 </body>
 </html>
