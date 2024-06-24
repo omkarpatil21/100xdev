@@ -24,10 +24,15 @@
         const c=document.getElementById("value5").value;
         const url="https://sum-server.100xdevs.com/interest?principal="+a+"&rate="+b+"&time="+c;
         console.log(url);
-        const response=await fetch(url);
-        const ans=await response.json();
-        console.log(ans);
-        document.getElementById("interest").innerHTML="The interest is"+ans.interest+" and total is "+ans.total;
+        fetch(url)
+        .then(function(response)
+        {
+            return response.json();
+        }).then(function(ans)
+        {
+            document.getElementById("interest").innerHTML="The interest is"+ans.interest+" and total is "+ans.total;
+        })
+        
     }
 </script>
 <body>
