@@ -1,0 +1,21 @@
+<html>
+    <script>
+        function add()
+        {
+            const task=document.getElementById("task").value;
+            const desc=document.getElementById("desc").value;
+            const div=document.getElementById("list");
+            div.innerHTML=`
+                <div>${task}</div>
+                <div>${desc}</div>
+                <button onclick="">mark as done</button>
+            `
+        }
+    </script>
+    <body>
+        <input type="text" placeholder="task" id="task">
+        <input type="text" placeholder="desc" id="desc">
+        <button onclick="add()">add to list</button>
+        <div id="list"></div>
+    </body>
+</html>
