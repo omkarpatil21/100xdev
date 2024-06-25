@@ -19,8 +19,9 @@
         }
         function markAsDone(id)
         {
+            const list=document.getElementById("list");
             const div=document.getElementById(id);
-            div.innerHTML="";
+            list.removeChild(div);
         }
         function add()
         {
@@ -29,6 +30,7 @@
             const div=document.getElementById("list");
             div.appendChild(createChild(task,desc,id));
             id++;
+            //noob approach
             // const original=div.innerHTML;
             // div.innerHTML=original+`<div id="ct${id}">
             //     <div>${task}</div>
