@@ -5,7 +5,8 @@
             const task=document.getElementById("task").value;
             const desc=document.getElementById("desc").value;
             const div=document.getElementById("list");
-            div.innerHTML=`
+            const original=div.innerHTML;
+            div.innerHTML=original+`
                 <div>${task}</div>
                 <div>${desc}</div>
                 <button onclick="">mark as done</button>
@@ -14,8 +15,13 @@
     </script>
     <body>
         <input type="text" placeholder="task" id="task">
+        <br>
+        <br>
         <input type="text" placeholder="desc" id="desc">
+        <br>
+        <br>
         <button onclick="add()">add to list</button>
+        <br>
         <div id="list"></div>
     </body>
 </html>
