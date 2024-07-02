@@ -1,5 +1,6 @@
 import {BrowserRouter,Routes, Route, useNavigate} from 'react-router-dom'
-
+import { Suspense, lazy } from 'react'
+const DashBoard = lazy(()=> import('./components/DashBoard'))
 function App() {
   
   return (
@@ -16,7 +17,7 @@ function App() {
         <Navbar></Navbar>
         <Routes>
           <Route path='/' element={<Landing/>}></Route>
-          <Route path='/dashboard' element={<Dashboard/>}></Route>
+          <Route path='/dashboard' element={<Suspense fallback={"loading"}><DashBoard/></Suspense>}></Route>
         </Routes>
       </BrowserRouter>
     </div>
@@ -41,9 +42,5 @@ function Landing(){
       Landing Page
     </div>)
 }
-function Dashboard(){
-  return <div>
-      DashBoard
-    </div>
-}
+
 export default App
