@@ -3,6 +3,7 @@ import { useEffect , useState} from "react";
 function useTodos()
 {
   const [todos,setTodos] = useState([]);
+  const [loading,setLoading]=useState(false);
 
   useEffect(()=>{
     fetch('https://sum-server.100xdevs.com/todos')
@@ -11,17 +12,18 @@ function useTodos()
     })
     .then((data)=>{
       setTodos(data.todos);
+      setLoading(true);
     })
   },[])
 
-  return todos;
+  return {todos,loading};
 }
 
 
 function App() {
-  const todos=useTodos();
+  const {todos,loading}=useTodos();
   return (<>
-  {todos.map((todo) => <Todo key={todo.id} todo={todo}></Todo>)}
+  {loading?<div>loading..</div>:todos.map((todo) => <Todo key={todo.id} todo={todo}></Todo>)}
   </>
   )
 }
